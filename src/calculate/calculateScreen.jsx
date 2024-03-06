@@ -5,7 +5,7 @@ import CalculationProccess from "./components/calculationProccess";
 import CalculationPressables from "./components/calculationPressables";
 import CalculateFooter from "./components/calculateFooter";
 
-const CalculateScreen = () => {
+const CalculateScreen = ({ route }) => {
   const [numbers, setNumbers] = useState([]);
 
   const addNumber = (number) => {
@@ -26,7 +26,7 @@ const CalculateScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <CalculationResult numbers={numbers} />
+      <CalculationResult numbers={numbers} defaultValue={route.params.score} />
       <CalculationProccess
         removeNumberPressed={removeNumber}
         numbers={numbers}
