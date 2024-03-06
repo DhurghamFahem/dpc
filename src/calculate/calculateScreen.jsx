@@ -14,9 +14,9 @@ const CalculateScreen = () => {
     });
   };
 
-  const removeNumber = (number) => {
+  const removeNumber = (index) => {
     setNumbers((prevNumbers) => {
-      return [number, ...prevNumbers];
+      return prevNumbers.filter((value, idx) => idx != index);
     });
   };
 

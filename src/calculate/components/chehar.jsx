@@ -9,6 +9,7 @@ const Chehar = ({ addNumberPressed }) => {
         addNumberPressed(4);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>4</Text>
       <View
         style={{
           justifyContent: "space-around",

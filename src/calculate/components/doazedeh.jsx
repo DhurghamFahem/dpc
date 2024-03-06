@@ -9,6 +9,7 @@ const Doazedeh = ({ addNumberPressed }) => {
         addNumberPressed(12);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>12</Text>
       <View
         style={{
           justifyContent: "space-around",

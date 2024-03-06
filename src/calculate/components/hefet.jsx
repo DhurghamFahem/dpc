@@ -10,6 +10,7 @@ const Hefet = ({ addNumberPressed }) => {
         addNumberPressed(7);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>7</Text>
       <View
         style={{
           justifyContent: "space-around",

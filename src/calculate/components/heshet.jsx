@@ -9,6 +9,7 @@ const Heshet = ({ addNumberPressed }) => {
         addNumberPressed(8);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>8</Text>
       <View
         style={{
           justifyContent: "space-around",

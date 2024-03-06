@@ -9,6 +9,7 @@ const Deh = ({ addNumberPressed }) => {
         addNumberPressed(10);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>10</Text>
       <View
         style={{
           justifyContent: "space-around",

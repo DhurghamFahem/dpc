@@ -9,6 +9,7 @@ const Shesh = ({ addNumberPressed }) => {
         addNumberPressed(6);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>6</Text>
       <View
         style={{
           justifyContent: "space-around",

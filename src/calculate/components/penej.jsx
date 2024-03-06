@@ -9,6 +9,7 @@ const Penej = ({ addNumberPressed }) => {
         addNumberPressed(5);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>5</Text>
       <View
         style={{
           justifyContent: "space-around",

@@ -11,6 +11,7 @@ const Yek = ({ addNumberPressed }) => {
         addNumberPressed(1);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>1</Text>
       <View
         style={[calculateGlobalStyles.dot, { backgroundColor: "#CCC9DC" }]}
       ></View>

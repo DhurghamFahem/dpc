@@ -9,6 +9,7 @@ const Do = ({ addNumberPressed }) => {
         addNumberPressed(2);
       }}
     >
+      <Text style={calculateGlobalStyles.backgroundNumber}>2</Text>
       <View
         style={{
           justifyContent: "space-around",
@@ -38,6 +39,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "#0C1821",
+    justifyContent: "center",
+    alignItems: "center",
     marginLeft: 5,
   },
 });
