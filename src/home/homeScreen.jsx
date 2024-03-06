@@ -19,17 +19,20 @@ const HomeScreen = () => {
 
   useEffect(() => {
     storage
-      .getAllDataForKey("teams")
-      .then((teams) => {
-        setTeams(teams);
-        setLoading(false);
+      .load({
+        key: "teams",
+        autoSync: true,
+        syncInBackground: true,
       })
-      .catch((error) => {
-        console.error("Error fetching teams:", error);
+      .then((ret) => {
+        setLoading(false);
+        setTeams(ret);
+      })
+      .catch((err) => {
+        console.warn(err.message);
         setLoading(false);
       });
   }, []);
-
   const toggleAddTeamModal = () => {
     setIsAddTeamFormVisible((prevIsAddTeamFormVisible) => {
       !prevIsAddTeamFormVisible;
@@ -39,10 +42,10 @@ const HomeScreen = () => {
   const addTeam = (teamName) => {
     setIsAddTeamFormVisible(false);
 
-    let data = [{ name: teamName, score: 0 }, ...teams];
+    let obj = { name: teamName, score: 0 };
+    let data = [obj, ...teams];
     storage.save({
       key: "teams",
-      id: "1",
       data: data,
     });
 
@@ -51,7 +54,10 @@ const HomeScreen = () => {
 
   const clear = () => {
     setIsAddTeamFormVisible(false);
-    storage.clearMapForKey("teams");
+    storage.save({
+      key: "teams",
+      data: [],
+    });
     setTeams([]);
   };
 
