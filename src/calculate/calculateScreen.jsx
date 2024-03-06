@@ -24,15 +24,22 @@ const CalculateScreen = ({ route }) => {
     setNumbers([]);
   };
 
+  const save = () => {
+    setNumbers([]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <CalculationResult numbers={numbers} defaultValue={route.params.score} />
+      <CalculationResult
+        numbers={numbers}
+        defaultValue={route.params.team.score}
+      />
       <CalculationProccess
         removeNumberPressed={removeNumber}
         numbers={numbers}
       />
       <CalculationPressables addNumberPressed={addNumber} />
-      <CalculateFooter clearPressed={clearNumbers} />
+      <CalculateFooter clearPressed={clearNumbers} savePressed={save} />
     </SafeAreaView>
   );
 };

@@ -5,7 +5,7 @@ import DetailsSvg from "../svgs/details";
 
 const TeamCardFooter = ({ team, navigation }) => {
   const plusPressed = () => {
-    navigation.navigate("CalculateScreen", { score: team.score });
+    navigation.navigate("CalculateScreen", { team: team });
   };
 
   const detailsPressed = () => {};
