@@ -1,9 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-const Shesh = () => {
+const Shesh = ({ addNumberPressed }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        addNumberPressed(6);
+      }}
+    >
       <View
         style={{
           justifyContent: "space-around",

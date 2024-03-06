@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import React from "react";
 
 const CalculationProccess = () => {
   return (
     <View style={styles.container}>
-      <Text></Text>
+      <Pressable style={styles.clearButton}></Pressable>
     </View>
   );
 };
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 5,
   },
+  clearButton: {},
 });
 
 export default CalculationProccess;

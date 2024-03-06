@@ -2,9 +2,14 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 
-const Hefet = () => {
+const Hefet = ({ addNumberPressed }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        addNumberPressed(7);
+      }}
+    >
       <View
         style={{
           justifyContent: "space-around",

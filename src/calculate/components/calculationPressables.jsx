@@ -17,32 +17,32 @@ import Cheharedeh from "./cheharedeh";
 import Panezedeh from "./panezedeh";
 import Number50 from "./number50";
 
-const CalculationPressables = () => {
+const CalculationPressables = ({ addNumberPressed }) => {
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row", flex: 1 }}>
-        <Yek />
-        <Do />
-        <Seh />
-        <Chehar />
+        <Yek addNumberPressed={addNumberPressed} />
+        <Do addNumberPressed={addNumberPressed} />
+        <Seh addNumberPressed={addNumberPressed} />
+        <Chehar addNumberPressed={addNumberPressed} />
       </View>
       <View style={{ flexDirection: "row", flex: 1 }}>
-        <Penej />
-        <Shesh />
-        <Hefet />
-        <Heshet />
+        <Penej addNumberPressed={addNumberPressed} />
+        <Shesh addNumberPressed={addNumberPressed} />
+        <Hefet addNumberPressed={addNumberPressed} />
+        <Heshet addNumberPressed={addNumberPressed} />
       </View>
       <View style={{ flexDirection: "row", flex: 1 }}>
-        <Neh />
-        <Deh />
-        <Yazedeh />
-        <Doazedeh />
+        <Neh addNumberPressed={addNumberPressed} />
+        <Deh addNumberPressed={addNumberPressed} />
+        <Yazedeh addNumberPressed={addNumberPressed} />
+        <Doazedeh addNumberPressed={addNumberPressed} />
       </View>
       <View style={{ flexDirection: "row", flex: 1 }}>
-        <Seyezedeh />
-        <Cheharedeh />
-        <Panezedeh />
-        <Number50 />
+        <Seyezedeh addNumberPressed={addNumberPressed} />
+        <Cheharedeh addNumberPressed={addNumberPressed} />
+        <Panezedeh addNumberPressed={addNumberPressed} />
+        <Number50 addNumberPressed={addNumberPressed} />
       </View>
     </View>
   );

@@ -1,17 +1,38 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import React from "react";
+import { StyleSheet, SafeAreaView } from "react-native";
+import React, { useState } from "react";
 import CalculationResult from "./components/calculationResult";
 import CalculationProccess from "./components/calculationProccess";
 import CalculationPressables from "./components/calculationPressables";
 import CalculateFooter from "./components/calculateFooter";
 
 const CalculateScreen = () => {
+  const [numbers, setNumbers] = useState([]);
+
+  const addNumber = (number) => {
+    setNumbers((prevNumbers) => {
+      return [number, ...prevNumbers];
+    });
+  };
+
+  const removeNumber = (number) => {
+    setNumbers((prevNumbers) => {
+      return [number, ...prevNumbers];
+    });
+  };
+
+  const clearNumbers = () => {
+    setNumbers([]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <CalculationResult />
-      <CalculationProccess />
-      <CalculationPressables />
-      <CalculateFooter />
+      <CalculationResult numbers={numbers} />
+      <CalculationProccess
+        removeNumberPressed={removeNumber}
+        numbers={numbers}
+      />
+      <CalculationPressables addNumberPressed={addNumber} />
+      <CalculateFooter clearPressed={clearNumbers} />
     </SafeAreaView>
   );
 };

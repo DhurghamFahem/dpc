@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const CalculationResult = () => {
+const CalculationResult = ({ numbers }) => {
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>150</Text>
+      <Text style={styles.text}>{sum}</Text>
     </View>
   );
 };

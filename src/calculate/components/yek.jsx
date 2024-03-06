@@ -3,9 +3,14 @@ import React from "react";
 import calculateGlobalStyles from "../styles/calculateGlobalStyles";
 import { TouchableOpacity } from "react-native";
 
-const Yek = () => {
+const Yek = ({ addNumberPressed }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        addNumberPressed(1);
+      }}
+    >
       <View
         style={[calculateGlobalStyles.dot, { backgroundColor: "#CCC9DC" }]}
       ></View>

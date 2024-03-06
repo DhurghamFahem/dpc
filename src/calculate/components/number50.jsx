@@ -1,9 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-const Number50 = () => {
+const Number50 = ({ addNumberPressed }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        addNumberPressed(50);
+      }}
+    >
       <Text style={styles.text}>50</Text>
     </TouchableOpacity>
   );
