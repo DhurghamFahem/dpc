@@ -2,13 +2,13 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import TeamCardFooter from "./teamCardFooter";
 
-const TeamCard = ({ team }) => {
+const TeamCard = ({ team, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>{team.name}</Text>
       </View>
-      <TeamCardFooter team={team} />
+      <TeamCardFooter team={team} navigation={navigation} />
     </View>
   );
 };

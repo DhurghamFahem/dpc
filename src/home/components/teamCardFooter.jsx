@@ -3,12 +3,17 @@ import React from "react";
 import PlusSVG from "../svgs/plus";
 import DetailsSvg from "../svgs/details";
 
-const TeamCardFooter = ({ team }) => {
+const TeamCardFooter = ({ team, navigation }) => {
+  const plusPressed = () => {
+    navigation.navigate("CalculateScreen");
+  };
+
+  const detailsPressed = () => {};
   return (
     <View style={styles.container}>
-      <PlusSVG />
+      <PlusSVG onPress={plusPressed} />
       <Text style={styles.text}>{team.score}</Text>
-      <DetailsSvg />
+      <DetailsSvg onPress={detailsPressed} />
     </View>
   );
 };

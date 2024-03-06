@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import TeamCard from "./components/teamCard";
@@ -12,7 +11,7 @@ import storage from "../../data/storage";
 import AddTeamForm from "./components/addTeamForm";
 import HomeFooter from "./components/homeFooter";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [isAddTeamFormVisible, setIsAddTeamFormVisible] = useState(false);
   const [teams, setTeams] = useState([]);
@@ -73,7 +72,7 @@ const HomeScreen = () => {
         <>
           <View style={styles.header}>
             {teams.map((team, index) => (
-              <TeamCard key={index} team={team} />
+              <TeamCard key={index} team={team} navigation={navigation} />
             ))}
             <AddTeamCard onPress={toggleAddTeamModal} />
             <AddTeamForm

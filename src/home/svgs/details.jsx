@@ -1,9 +1,10 @@
 import React from "react";
 import TouchableOpacitySVG from "../../shared/components/touchableOpacitySVG";
 
-const DetailsSvg = () => {
+const DetailsSvg = ({ onPress }) => {
   return (
     <TouchableOpacitySVG
+      onPress={onPress}
       width={50}
       height={50}
       path={
