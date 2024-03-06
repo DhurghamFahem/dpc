@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import CalculateScreen from "./src/calculate/calculateScreen";
+import HomeScreen from "./src/home/homeScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <CalculateScreen />
+      <HomeScreen />
     </View>
   );
 }
