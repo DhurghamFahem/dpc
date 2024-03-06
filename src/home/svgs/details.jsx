@@ -1,9 +1,9 @@
 import React from "react";
-import Svg from "../../shared/components/mySvg";
+import TouchableOpacitySVG from "../../shared/components/touchableOpacitySVG";
 
 const DetailsSvg = () => {
   return (
-    <Svg
+    <TouchableOpacitySVG
       width={50}
       height={50}
       path={

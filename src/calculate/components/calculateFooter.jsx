@@ -1,12 +1,13 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
+import { TouchableOpacity } from "react-native-web";
 
 const CalculateFooter = ({ clearPressed }) => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.clearButton} onPress={clearPressed}>
+      <TouchableOpacity style={styles.clearButton} onPress={clearPressed}>
         <Text style={styles.clearText}>Clear</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };
