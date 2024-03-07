@@ -4,8 +4,10 @@ import CalculationResult from "./components/calculationResult";
 import CalculationProccess from "./components/calculationProccess";
 import CalculationPressables from "./components/calculationPressables";
 import CalculateFooter from "./components/calculateFooter";
+import storage from "../../data/storage";
+import uuid from "react-native-uuid";
 
-const CalculateScreen = ({ route }) => {
+const CalculateScreen = ({ route, navigation }) => {
   const [numbers, setNumbers] = useState([]);
 
   const addNumber = (number) => {
@@ -25,15 +27,26 @@ const CalculateScreen = ({ route }) => {
   };
 
   const save = () => {
-    setNumbers([]);
+    const index = route.params.teams
+      .map((c) => c.id)
+      .indexOf(route.params.team.id);
+
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const obj = { id: uuid.v4(), score: sum };
+
+    route.params.team.score = sum + route.params.team.score;
+    route.params.team.records = [obj, ...route.params.team.records];
+    route.params.teams[index] = route.params.team;
+    storage.save({
+      key: "teams",
+      data: route.params.teams,
+    });
+    navigation.goBack();
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <CalculationResult
-        numbers={numbers}
-        defaultValue={route.params.team.score}
-      />
+      <CalculationResult numbers={numbers} defaultValue={0} />
       <CalculationProccess
         removeNumberPressed={removeNumber}
         numbers={numbers}

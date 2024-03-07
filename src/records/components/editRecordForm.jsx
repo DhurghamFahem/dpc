@@ -2,26 +2,37 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   Modal,
   Pressable,
+  StyleSheet,
 } from "react-native";
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { TouchableOpacity } from "react-native";
 
-const AddTeamForm = ({ visible, onAddPressed, onClosePressed }) => {
+const EditRecordForm = ({
+  selectedRecord,
+  visible,
+  onEditPressed,
+  onClosePressed,
+}) => {
   const validationSchema = Yup.object().shape({
-    teamName: Yup.string().required("Team Name is required"),
+    score: Yup.number()
+      .required("Score is required")
+      .positive("Input must be a positive number")
+      .integer("Input must be an integer"),
   });
 
   const initialValues = {
-    teamName: "",
+    score:
+      selectedRecord && selectedRecord.score
+        ? selectedRecord.score.toString()
+        : "",
   };
 
   const handleSubmit = (values) => {
-    onAddPressed(values.teamName);
+    onEditPressed({ id: selectedRecord.id, score: parseInt(values.score) });
   };
 
   return (
@@ -52,17 +63,18 @@ const AddTeamForm = ({ visible, onAddPressed, onClosePressed }) => {
               <View>
                 <TextInput
                   placeholderTextColor={"#0C1821"}
-                  placeholder="Team name .."
+                  placeholder="Score .."
                   style={styles.input}
-                  onChangeText={handleChange("teamName")}
-                  onBlur={handleBlur("teamName")}
-                  value={values.teamName}
+                  onChangeText={handleChange("score")}
+                  onBlur={handleBlur("score")}
+                  value={values.score}
+                  keyboardType="numeric"
                 />
-                {touched.teamName && errors.teamName && (
-                  <Text style={styles.errorText}>{errors.teamName}</Text>
+                {touched.score && errors.score && (
+                  <Text style={styles.errorText}>{errors.score}</Text>
                 )}
                 <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                  <Text style={styles.buttonText}>Add</Text>
+                  <Text style={styles.buttonText}>Update</Text>
                 </TouchableOpacity>
               </View>
             )}
@@ -112,4 +124,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddTeamForm;
+export default EditRecordForm;

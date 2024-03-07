@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -10,13 +10,16 @@ import AddTeamCard from "./components/addTeamCard";
 import storage from "../../data/storage";
 import AddTeamForm from "./components/addTeamForm";
 import HomeFooter from "./components/homeFooter";
+import uuid from "react-native-uuid";
+import { useIsFocused } from "@react-navigation/native";
 
 const HomeScreen = ({ navigation }) => {
+  const isFocused = useIsFocused();
   const [loading, setLoading] = useState(true);
   const [isAddTeamFormVisible, setIsAddTeamFormVisible] = useState(false);
   const [teams, setTeams] = useState([]);
 
-  useEffect(() => {
+  const handleRefresh = useCallback(() => {
     storage
       .load({
         key: "teams",
@@ -32,6 +35,12 @@ const HomeScreen = ({ navigation }) => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      handleRefresh();
+    }
+  }, [isFocused, handleRefresh]);
   const toggleAddTeamModal = () => {
     setIsAddTeamFormVisible((prevIsAddTeamFormVisible) => {
       !prevIsAddTeamFormVisible;
@@ -41,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
   const addTeam = (teamName) => {
     setIsAddTeamFormVisible(false);
 
-    let obj = { name: teamName, score: 0 };
+    let obj = { id: uuid.v4(), name: teamName, score: 0, records: [] };
     let data = [obj, ...teams];
     storage.save({
       key: "teams",
@@ -72,7 +81,12 @@ const HomeScreen = ({ navigation }) => {
         <>
           <View style={styles.header}>
             {teams.map((team, index) => (
-              <TeamCard key={index} team={team} navigation={navigation} />
+              <TeamCard
+                key={index}
+                team={team}
+                teams={teams}
+                navigation={navigation}
+              />
             ))}
             <AddTeamCard onPress={toggleAddTeamModal} />
             <AddTeamForm

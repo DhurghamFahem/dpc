@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 
-const HomeFooter = ({ clearPressed }) => {
+const RecordsFooter = ({ clearPressed }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.clearButton} onPress={clearPressed}>
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeFooter;
+export default RecordsFooter;

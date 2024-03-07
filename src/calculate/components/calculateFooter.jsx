@@ -9,7 +9,7 @@ const CalculateFooter = ({ clearPressed, savePressed }) => {
         <Text style={styles.clearText}>Clear</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.saveButton} onPress={clearPressed}>
+      <TouchableOpacity style={styles.saveButton} onPress={savePressed}>
         <Text style={styles.saveText}>Save</Text>
       </TouchableOpacity>
     </View>
